@@ -2,7 +2,7 @@ package vsu.pustoslov.task2;
 
 import java.util.Scanner;
 
-public class Task2Test {
+public class Task2Main {
 
     public static void main(String[] args) {
         double a = readDouble("Side A length = ");
@@ -12,19 +12,7 @@ public class Task2Test {
         prepareData(a, b, c, r);
     }
 
-    /*private static double readRadius() {
-        System.out.print("Radius = ");
-        Scanner scanner = new Scanner(System.in);
-        return scanner.nextDouble();
-    }*/
-
     private static void prepareData(double a, double b, double c, double r) {
-        /*double a1 = Math.min(Math.min(a, b), c);
-        double b1 = Math.max(Math.max(a, b), c);
-        double c1 = a + b + c - a1 - b1;
-        a = a1;
-        b = b1;
-        c = c1;*/
         if (a >= b + c || b >= a + c || c >= a + b) {
             System.out.println("Triangle you are looking for doesn't exist, sorry");
         } else {
@@ -55,5 +43,4 @@ public class Task2Test {
         Scanner scanner = new Scanner(System.in);
         return scanner.nextDouble();
     }
-
 }
