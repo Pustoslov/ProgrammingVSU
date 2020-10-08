@@ -21,19 +21,19 @@ public class Task2Main {
     }
 
     private static void checkPossibility(double a, double b, double c, double r) {
-        if (countAreaGeron(a, b, c) == countAreaRadius(a, b, c, r)) {
+        if (countAreaByGeron(a, b, c) == countAreaWithRadius(a, b, c, r)) {
             System.out.println("Yes, you can!");
         } else {
             System.out.println("No, you can't...");
         }
     }
 
-    private static double countAreaGeron(double a, double b, double c) {
+    private static double countAreaByGeron(double a, double b, double c) {
         double halfPerimeter = countHalfPerimeter(a, b, c);
         return Math.sqrt(halfPerimeter * (halfPerimeter - a) * (halfPerimeter - b) * (halfPerimeter - c));
     }
 
-    private static double countAreaRadius(double a, double b, double c, double r) {
+    private static double countAreaWithRadius(double a, double b, double c, double r) {
         return r * countHalfPerimeter(a, b, c);
     }
 
