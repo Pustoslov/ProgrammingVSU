@@ -10,12 +10,8 @@ public class Task2Test {
         double b = consoleReader.readDouble("Side B length = ");
         double c = consoleReader.readDouble("Side C length = ");
         double r = consoleReader.readDouble("Radius R length = ");
-        try {
-            Triangle triangle = new Triangle(a, b, c);
-            checkPossibilityRadius(triangle, r);
-        } catch (IllegalArgumentException e) {
-            System.out.println("Triangle you are looking for doesn't exist, sorry");
-        }
+        Triangle triangle = new Triangle(a, b, c);
+        checkPossibilityRadius(triangle, r);
     }
 
     private static void checkPossibilityRadius(Triangle triangle, double r) {

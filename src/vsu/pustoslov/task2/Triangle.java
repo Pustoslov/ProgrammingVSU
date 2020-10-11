@@ -7,9 +7,8 @@ public class Triangle {
 
     public Triangle(double a, double b, double c) {
         if (checkPossibilityExist(a, b, c)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Triangle you are looking for doesn't exist, sorry");
         }
-
         this.a = a;
         this.b = b;
         this.c = c;
