@@ -9,7 +9,7 @@ public class Task5 {
         printPicture(h);
     }
 
-    public static void printPicture(int h) {
+    private static void printPicture(int h) {
         for (int i = 0; i < (h + 1) / 2; i++) {
             if (i == 0) {
                 for (int j = 0; j < h; j++) {
