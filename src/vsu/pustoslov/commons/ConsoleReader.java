@@ -9,4 +9,9 @@ public class ConsoleReader {
         System.out.printf("%s", lineForPrinting);
         return scanner.nextDouble();
     }
+
+    public int readInt(String lineForPrinting) {
+        System.out.printf("%s", lineForPrinting);
+        return scanner.nextInt();
+    }
 }

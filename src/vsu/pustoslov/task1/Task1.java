@@ -8,19 +8,10 @@ public class Task1 {
         double a = readDouble("a");
         double b = readDouble("b");
         double c = readDouble("c");
-        //double c = readDouble("c");
-        /*Scanner scanner = new Scanner(System.in);
-        System.out.println("Длина стороны a = ");
-        double a = scanner.nextDouble();
-        System.out.println("Длина стороны b = ");
-        double b = scanner.nextDouble();
-        System.out.println("Длина стороны c = ");
-        double c = scanner.nextDouble();*/
         double h1 = calculateHeight(a, b, c);
         double h2 = calculateHeight(b, a, c);
         double h3 = calculateHeight(c, a, b);
-        System.out.printf
-                ("Для данного треугольника высоты равны H1 = %1$.2f H2 = %2$.2f H3 = %3$.2f", h1, h2, h3);
+        System.out.printf("Для данного треугольника высоты равны H1 = %1$.2f H2 = %2$.2f H3 = %3$.2f", h1, h2, h3);
     }
 
     private static double readDouble(String name) {
