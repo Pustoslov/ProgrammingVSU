@@ -1,5 +1,7 @@
 package vsu.pustoslov.figures;
 
+import vsu.pustoslov.task3.Point;
+
 public class Rectangle {
     private final double leftCornerPointX0;
     private final double leftCornerPointY0;
@@ -13,8 +15,8 @@ public class Rectangle {
         this.widthY = widthY;
     }
 
-    public boolean isPointInsideRectangle(double x, double y) {
-        return (x >= leftCornerPointX0) && (x <= leftCornerPointX0 + lengthX)
-                && (y >= leftCornerPointY0) && (y <= leftCornerPointY0 + widthY);
+    public boolean isPointInsideRectangle(Point point) {
+        return (point.getX() >= leftCornerPointX0) && (point.getX() <= leftCornerPointX0 + lengthX)
+                && (point.getY() >= leftCornerPointY0) && (point.getY() <= leftCornerPointY0 + widthY);
     }
 }

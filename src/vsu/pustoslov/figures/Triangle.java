@@ -24,7 +24,7 @@ public class Triangle {
     }
 
     private boolean checkPossibilityExist() {
-        return (sideA >= sideB + sideC && sideB >= sideA + sideC && sideC >= sideA + sideB);
+        return (sideA >= sideB + sideC || sideB >= sideA + sideC || sideC >= sideA + sideB);
     }
 
     private double calculateSqrt() {
