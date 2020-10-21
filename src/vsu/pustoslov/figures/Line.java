@@ -1,4 +1,4 @@
-package vsu.pustoslov.task3;
+package vsu.pustoslov.figures;
 
 public class Line {
     private final double x0;

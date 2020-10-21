@@ -1,4 +1,4 @@
-package vsu.pustoslov.task3;
+package vsu.pustoslov.figures;
 
 public class Rectangle {
     private final double leftCornerPointX0;
@@ -13,8 +13,8 @@ public class Rectangle {
         this.widthY = widthY;
     }
 
-    public boolean isPointInsideSquare(double x, double y) {
-        return (x <= leftCornerPointX0 + lengthX) && (x >= leftCornerPointX0)
-                && (y <= leftCornerPointY0 + widthY) && (y >= leftCornerPointY0);
+    public boolean isPointInsideRectangle(double x, double y) {
+        return (x >= leftCornerPointX0) && (x <= leftCornerPointX0 + lengthX)
+                && (y >= leftCornerPointY0) && (y <= leftCornerPointY0 + widthY);
     }
 }
