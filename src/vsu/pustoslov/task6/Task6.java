@@ -4,7 +4,7 @@ import vsu.pustoslov.commons.ConsoleReader;
 
 public class Task6 {
     public static void main(String[] args) {
-        ConsoleReader consoleReader = new ConsoleReader();
+        final ConsoleReader consoleReader = new ConsoleReader();
         final double x = consoleReader.readDouble("Input x please: ");
         final int n = consoleReader.readInt("Input n please: ");
         final double e = consoleReader.readDouble("Input e please: ");
@@ -17,24 +17,15 @@ public class Task6 {
         double sumOfRowMoreThanE = 0;
         double sumOfRowETen = 0;
         for (int i = 0; i < n; i++) {
-            if (i % 2 == 0) {
-                sumOfRowN = sumOfRowN + memberOfARow(x, i);
-                if (memberOfARow(x, i) > e) {
-                    sumOfRowMoreThanE = sumOfRowMoreThanE + memberOfARow(x, i);
-                }
-                if (memberOfARow(x, i) > e / 10) {
-                    sumOfRowETen = sumOfRowETen + memberOfARow(x, i);
-                }
-            } else {
-                sumOfRowN = sumOfRowN - memberOfARow(x, i);
-                if (memberOfARow(x, i) > e) {
-                    sumOfRowMoreThanE = sumOfRowMoreThanE - memberOfARow(x, i);
-                }
-                if (memberOfARow(x, i) > e / 10) {
-                    sumOfRowETen = sumOfRowETen - memberOfARow(x, i);
-                }
+            double nextMemberOfRow = memberOfARow(x, i);
+            int sign = (i % 2 == 0 ? 1 : -1);
+            sumOfRowN = sumOfRowN + sign * nextMemberOfRow;
+            if (nextMemberOfRow > e) {
+                sumOfRowMoreThanE = sumOfRowMoreThanE + sign * nextMemberOfRow;
             }
-
+            if (nextMemberOfRow > e / 10) {
+                sumOfRowETen = sumOfRowETen + sign * nextMemberOfRow;
+            }
         }
         System.out.printf("1) Sum of n members of a row: %s\n", sumOfRowN);
         System.out.printf("2) Sum of n members of a row, which in absolute value exceed e: %s\n", sumOfRowMoreThanE);

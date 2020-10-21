@@ -1,4 +1,6 @@
-package vsu.pustoslov.task3;
+package vsu.pustoslov.figures;
+
+import vsu.pustoslov.task3.Point;
 
 public class Line {
     private final double x0;
@@ -11,7 +13,7 @@ public class Line {
         this.a = a;
     }
 
-    public boolean isPointAboveLine(double x, double y) {
-        return y >= a * (x - x0) + y0;
+    public boolean isPointAboveLine(Point point) {
+        return point.getY() >= a * (point.getX() - x0) + y0;
     }
 }
