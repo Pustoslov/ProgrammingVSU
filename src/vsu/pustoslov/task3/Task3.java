@@ -16,7 +16,8 @@ public class Task3 {
             new Point(4, -2),
             new Point(0, -7),
             new Point(0, -2),
-            new Point(4.5, 3.3)};
+            new Point(4.5, 3.3),
+    };
 
     public static void main(String[] args) {
         for (Point value : POINTS_FOR_TEST) {
