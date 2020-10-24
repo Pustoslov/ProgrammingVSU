@@ -25,7 +25,7 @@ public class Task2 {
     }
 
     private static double countAreaByGeron(Triangle triangle) {
-        double halfPerimeter = triangle.calculateHalfPerimeter();
+        final double halfPerimeter = triangle.calculateHalfPerimeter();
         return Math.sqrt(halfPerimeter * (halfPerimeter - triangle.getSideA())
                 * (halfPerimeter - triangle.getSideB()) * (halfPerimeter - triangle.getSideC()));
     }

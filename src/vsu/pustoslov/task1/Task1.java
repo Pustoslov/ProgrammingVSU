@@ -10,8 +10,8 @@ public class Task1 {
         final double sideA = consoleReader.readDouble("Input side A: ");
         final double sideB = consoleReader.readDouble("Input side B: ");
         final double sideC = consoleReader.readDouble("Input side C: ");
-        Triangle triangle = new Triangle(sideA, sideB, sideC);
-        System.out.printf("Для данного треугольника высоты равны H1 = %1$.2f H2 = %2$.2f H3 = %3$.2f",
+        final Triangle triangle = new Triangle(sideA, sideB, sideC);
+        System.out.printf("Для данного треугольника высоты равны H1 = %1$.2f H2 = %2$.2f H3 = %3$.2f\n",
                 triangle.calculateHeight(triangle.getSideA()), triangle.calculateHeight(triangle.getSideB()), triangle.calculateHeight(triangle.getSideC()));
     }
 }

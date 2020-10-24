@@ -1,4 +1,4 @@
-package vsu.pustoslov.task3;
+package vsu.pustoslov.figures;
 
 public class Point {
     private final double x;
