@@ -5,7 +5,7 @@ import vsu.pustoslov.commons.ConsoleReader;
 public class Task5 {
 
     public static void main(String[] args) {
-        ConsoleReader consoleReader = new ConsoleReader();
+        final ConsoleReader consoleReader = new ConsoleReader();
         final int h = consoleReader.readInt("Input odd number >=3 : ");
         printPicture(h);
     }

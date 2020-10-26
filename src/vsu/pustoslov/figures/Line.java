@@ -1,7 +1,5 @@
 package vsu.pustoslov.figures;
 
-import vsu.pustoslov.task3.Point;
-
 public class Line {
     private final double x0;
     private final double y0;
