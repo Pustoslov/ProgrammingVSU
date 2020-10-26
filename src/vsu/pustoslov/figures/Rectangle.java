@@ -1,7 +1,5 @@
 package vsu.pustoslov.figures;
 
-import vsu.pustoslov.task3.Point;
-
 public class Rectangle {
     private final double leftCornerPointX0;
     private final double leftCornerPointY0;
