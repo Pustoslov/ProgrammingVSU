@@ -20,16 +20,15 @@ public class Task3 {
     };
 
     public static void main(String[] args) {
-        for (Point value : POINTS_FOR_TEST) {
-            printColorForPoint(value);
+        for (Point testPoint : POINTS_FOR_TEST) {
+            printColorForPoint(testPoint);
         }
 
         final ConsoleReader consoleReader = new ConsoleReader();
         final double x = consoleReader.readDouble("Input X: ");
         final double y = consoleReader.readDouble("Input Y: ");
-        final Point point = new Point(x, y);
 
-        printColorForPoint(point);
+        printColorForPoint(new Point(x, y));
     }
 
     private static SimpleColor getColor(Point point) {

@@ -10,8 +10,8 @@ public class Task2 {
         final double sideA = consoleReader.readDouble("Side A length = ");
         final double sideB = consoleReader.readDouble("Side B length = ");
         final double sideC = consoleReader.readDouble("Side C length = ");
-        final double radius = consoleReader.readDouble("Radius R length = ");
         final Triangle triangle = new Triangle(sideA, sideB, sideC);
+        final double radius = consoleReader.readDouble("Radius R length = ");
 
         checkPossibilityRadius(triangle, radius);
     }
