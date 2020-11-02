@@ -25,36 +25,47 @@ public class Task7 {
             System.out.printf("For array %s with length = %s\n answer = %s\n", Arrays.toString(row), row.length, calculateAnswer(row));
         }
 
-        final int[] array = ArrayUtils.readIntArrayFromConsole();
-        System.out.printf("Answer = %s\n", calculateAnswer(array));
+        try {
+            final int[] array = ArrayUtils.readIntArrayFromConsole();
+            System.out.printf("Answer = %s\n", calculateAnswer(array));
+        } catch (Exception e) {
+            System.out.println("Enter non-empty array please!");
+            final int[] array = ArrayUtils.readIntArrayFromConsole();
+            System.out.printf("Answer = %s\n", calculateAnswer(array));
+        }
     }
 
     private static int calculateAnswer(int[] array) {
         int amountOfElementsToFind = 0;
         int min = array[0];
-        int checker = 1;
+        int counterOfIdenticalNumbers = 1;
 
         for (int i = 1; i < array.length; i++) {
             if (array[i - 1] == array[i]) {
-                checker++;
+                counterOfIdenticalNumbers++;
             }
+
             if (array[i] < min) {
                 min = array[i];
             }
         }
-        if (checker == array.length) {
+
+        if (counterOfIdenticalNumbers == array.length) {
             return 0;
         }
-        final double arrayAverage = calculateArrayAverage(array, min);
+
+        final double arrayAverage = calculateArrayAverageGreaterThanMin(array, min);
+
         for (int currentValue : array) {
             if (currentValue >= arrayAverage) {
                 amountOfElementsToFind++;
             }
         }
+
         return amountOfElementsToFind;
     }
 
-    private static double calculateArrayAverage(int[] array, int min) {
+    private static double calculateArrayAverageGreaterThanMin(int[] array, int min) {
         int amountOfDigits = 0;
         double sumOfArrayElements = 0;
 
@@ -64,6 +75,7 @@ public class Task7 {
                 amountOfDigits++;
             }
         }
+
         return sumOfArrayElements / amountOfDigits;
     }
 
