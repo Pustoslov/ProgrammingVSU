@@ -25,15 +25,19 @@ public class Task7 {
             System.out.printf("For array %s with length = %s\n answer = %s\n", Arrays.toString(row), row.length, calculateAnswer(row));
         }
 
-        try {
-            final int[] array = ArrayUtils.readIntArrayFromConsole();
-            System.out.printf("Answer = %s\n", calculateAnswer(array));
-        } catch (Exception e) {
-            System.out.println("Enter non-empty array please!");
-            final int[] array = ArrayUtils.readIntArrayFromConsole();
-            System.out.printf("Answer = %s\n", calculateAnswer(array));
-        }
+        int[] array;
+
+        do {
+            array = ArrayUtils.readIntArrayFromConsole();
+
+            if (array.length == 0) {
+                System.out.println("Enter non-empty array please!");
+            }
+        } while (array.length == 0);
+
+        System.out.printf("Answer = %s\n", calculateAnswer(array));
     }
+
 
     private static int calculateAnswer(int[] array) {
         int amountOfElementsToFind = 0;
