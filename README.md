@@ -103,7 +103,7 @@ n и e, определяемых вводом, вычислить:
 
 ![Number_19](https://sun9-50.userapi.com/GvItSwr0nHVc6QsEuO7h2nmmK8jjfjp1mm8m0g/ZMNv2fOrfks.jpg)
 ***
-#### Task7
+#### [Task7](./src/vsu/pustoslov/task7)
 
 13\) Вводится массив целых чисел. 
 Посчитать количество элементов массива, 

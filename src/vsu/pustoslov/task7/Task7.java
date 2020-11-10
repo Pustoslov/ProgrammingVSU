@@ -1,6 +1,6 @@
 package vsu.pustoslov.task7;
 
-import ru.vsu.cs.util.ArrayUtils;
+import vsu.pustoslov.commons.ConsoleReader;
 
 import java.util.Arrays;
 
@@ -21,66 +21,15 @@ public class Task7 {
     };
 
     public static void main(String[] args) {
+        final ConsoleReader consoleReader = new ConsoleReader();
+        final ArrayCalculator arrayCalculator = new ArrayCalculator();
+
         for (int[] row : ARRAY_FOR_TESTS) {
-            System.out.printf("For array %s with length = %s\n answer = %s\n", Arrays.toString(row), row.length, calculateAnswer(row));
+            System.out.printf("For array %s with length = %s\n answer = %s\n", Arrays.toString(row),
+                    row.length, arrayCalculator.calculateAnswer(row));
         }
 
-        int[] array;
-
-        do {
-            array = ArrayUtils.readIntArrayFromConsole();
-
-            if (array.length == 0) {
-                System.out.println("Enter non-empty array please!");
-            }
-        } while (array.length == 0);
-
-        System.out.printf("Answer = %s\n", calculateAnswer(array));
+        final int[] consoleArray = consoleReader.readIntArray();
+        System.out.printf("Answer = %s\n", arrayCalculator.calculateAnswer(consoleArray));
     }
-
-
-    private static int calculateAnswer(int[] array) {
-        int amountOfElementsToFind = 0;
-        int min = array[0];
-        int counterOfIdenticalNumbers = 1;
-
-        for (int i = 1; i < array.length; i++) {
-            if (array[i - 1] == array[i]) {
-                counterOfIdenticalNumbers++;
-            }
-
-            if (array[i] < min) {
-                min = array[i];
-            }
-        }
-
-        if (counterOfIdenticalNumbers == array.length) {
-            return 0;
-        }
-
-        final double arrayAverage = calculateArrayAverageGreaterThanMin(array, min);
-
-        for (int currentValue : array) {
-            if (currentValue >= arrayAverage) {
-                amountOfElementsToFind++;
-            }
-        }
-
-        return amountOfElementsToFind;
-    }
-
-    private static double calculateArrayAverageGreaterThanMin(int[] array, int min) {
-        int amountOfDigits = 0;
-        double sumOfArrayElements = 0;
-
-        for (int currentValue : array) {
-            if (currentValue > min) {
-                sumOfArrayElements += currentValue;
-                amountOfDigits++;
-            }
-        }
-
-        return sumOfArrayElements / amountOfDigits;
-    }
-
 }
