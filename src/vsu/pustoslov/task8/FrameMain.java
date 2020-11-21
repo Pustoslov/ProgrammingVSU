@@ -1,12 +1,20 @@
 package vsu.pustoslov.task8;
 
-import ru.vsu.cs.util.*;
-
-import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+import javax.swing.JButton;
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.filechooser.FileFilter;
-import javax.swing.filechooser.*;
-import java.awt.event.*;
-import java.io.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import ru.vsu.cs.util.ArrayUtils;
+import ru.vsu.cs.util.JTableUtils;
+import ru.vsu.cs.util.SwingUtils;
 
 public class FrameMain extends JFrame {
 
