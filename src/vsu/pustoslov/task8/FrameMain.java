@@ -6,8 +6,6 @@ import java.io.File;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.filechooser.FileFilter;
@@ -27,6 +25,10 @@ public class FrameMain extends JFrame {
     private JButton saveToFileOutputButton;
     private JButton executeButton;
 
+    private final JFileChooser FILE_CH00SER_OPEN = new JFileChooser();
+    private final JFileChooser FILE_CHOOSER_SAVE = new JFileChooser();
+    private final FileFilter FILE_NAME_TXT_EXTENSION_FILTER = new FileNameExtensionFilter("Text files", "txt");
+
     public FrameMain() {
         this.setTitle("FrameMain");
         this.setContentPane(panelMain);
@@ -38,38 +40,34 @@ public class FrameMain extends JFrame {
         JTableUtils.initJTableForArray(outputTable, 40, true,
                 true, true, true);
 
-        inputTable.setRowHeight(25);
-        outputTable.setRowHeight(25);
+        inputTable.setRowHeight(40);
+        outputTable.setRowHeight(40);
 
-        final JFileChooser fileChooserOpen = new JFileChooser();
-        final JFileChooser fileChooserSave = new JFileChooser();
+        FILE_CH00SER_OPEN.setCurrentDirectory(new File("."));
+        FILE_CHOOSER_SAVE.setCurrentDirectory(new File("."));
 
-        fileChooserOpen.setCurrentDirectory(new File("."));
-        fileChooserSave.setCurrentDirectory(new File("."));
+        FILE_CH00SER_OPEN.addChoosableFileFilter(FILE_NAME_TXT_EXTENSION_FILTER);
+        FILE_CHOOSER_SAVE.addChoosableFileFilter(FILE_NAME_TXT_EXTENSION_FILTER);
 
-        final FileFilter filter = new FileNameExtensionFilter("Text files", "txt");
+        FILE_CHOOSER_SAVE.setAcceptAllFileFilterUsed(false);
+        FILE_CHOOSER_SAVE.setDialogType(JFileChooser.SAVE_DIALOG);
+        FILE_CHOOSER_SAVE.setApproveButtonText("Save");
 
-        fileChooserOpen.addChoosableFileFilter(filter);
-        fileChooserSave.addChoosableFileFilter(filter);
+        addLoadingFromFileButton();
+        addFillWithRandomButton();
+        addSaveToFileButton();
+        addExecuteButton();
+        addSaveToFileOutputButton();
+    }
 
-        fileChooserSave.setAcceptAllFileFilterUsed(false);
-        fileChooserSave.setDialogType(JFileChooser.SAVE_DIALOG);
-        fileChooserSave.setApproveButtonText("Save");
 
-        final JMenuBar menuBarMain = new JMenuBar();
-        setJMenuBar(menuBarMain);
-
-        final JMenu menuLookAndFeel = new JMenu();
-        menuLookAndFeel.setText("Вид");
-        menuBarMain.add(menuLookAndFeel);
-        SwingUtils.initLookAndFeelMenu(menuLookAndFeel);
-
+    private void addLoadingFromFileButton() {
         loadingFromFileButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 try {
-                    if (fileChooserOpen.showOpenDialog(panelMain) == JFileChooser.APPROVE_OPTION) {
-                        final int[][] arr = ArrayUtils.readIntArray2FromFile(fileChooserOpen.getSelectedFile().getPath());
+                    if (FILE_CH00SER_OPEN.showOpenDialog(panelMain) == JFileChooser.APPROVE_OPTION) {
+                        final int[][] arr = ArrayUtils.readIntArray2FromFile(FILE_CH00SER_OPEN.getSelectedFile().getPath());
                         JTableUtils.writeArrayToJTable(inputTable, arr);
                     }
                 } catch (Exception e) {
@@ -77,7 +75,9 @@ public class FrameMain extends JFrame {
                 }
             }
         });
+    }
 
+    private void addFillWithRandomButton() {
         fillWithRandomNumbersButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
@@ -90,45 +90,53 @@ public class FrameMain extends JFrame {
                 }
             }
         });
+    }
 
+    private void addSaveToFileButton() {
         saveToFileButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 try {
-                    if (fileChooserSave.showSaveDialog(panelMain) == JFileChooser.APPROVE_OPTION) {
+                    if (FILE_CHOOSER_SAVE.showSaveDialog(panelMain) == JFileChooser.APPROVE_OPTION) {
                         final int[][] matrix = JTableUtils.readIntMatrixFromJTable(inputTable);
-                        String file = fileChooserSave.getSelectedFile().getPath();
+                        String file = FILE_CHOOSER_SAVE.getSelectedFile().getPath();
                         if (!file.toLowerCase().endsWith(".txt")) {
                             file += ".txt";
                         }
                         ArrayUtils.writeArrayToFile(file, matrix);
                     }
                 } catch (Exception e) {
-                    SwingUtils.showErrorMessageBox(e);
+                    SwingUtils.showInfoMessageBox("Enter int array please");
                 }
             }
         });
+    }
 
+    private void addExecuteButton() {
         executeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 try {
                     final int[][] matrix = JTableUtils.readIntMatrixFromJTable(inputTable);
                     final MatrixCut logic = new MatrixCut();
-                    JTableUtils.writeArrayToJTable(outputTable, logic.trimMatrixToSquare(matrix));
+                    if (matrix != null) {
+                        JTableUtils.writeArrayToJTable(outputTable, logic.trimMatrixToSquare(matrix));
+                    }
                 } catch (Exception e) {
                     SwingUtils.showInfoMessageBox("Enter int array please");
                 }
             }
         });
+    }
 
+    private void addSaveToFileOutputButton() {
         saveToFileOutputButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 try {
-                    if (fileChooserSave.showSaveDialog(panelMain) == JFileChooser.APPROVE_OPTION) {
+                    if (FILE_CHOOSER_SAVE.showSaveDialog(panelMain) == JFileChooser.APPROVE_OPTION) {
                         final int[][] matrix = JTableUtils.readIntMatrixFromJTable(outputTable);
-                        String file = fileChooserSave.getSelectedFile().getPath();
+                        String file = FILE_CHOOSER_SAVE.getSelectedFile().getPath();
                         if (!file.toLowerCase().endsWith(".txt")) {
                             file += ".txt";
                         }
