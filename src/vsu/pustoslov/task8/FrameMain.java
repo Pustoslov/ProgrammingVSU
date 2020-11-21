@@ -106,8 +106,8 @@ public class FrameMain extends JFrame {
             public void actionPerformed(ActionEvent actionEvent) {
                 try {
                     final int[][] matrix = JTableUtils.readIntMatrixFromJTable(inputTable);
-                    final Logic logic = new Logic();
-                    JTableUtils.writeArrayToJTable(outputTable, logic.calculateAnswer(matrix));
+                    final MatrixCut logic = new MatrixCut();
+                    JTableUtils.writeArrayToJTable(outputTable, logic.trimMatrixToSquare(matrix));
                 } catch (Exception e) {
                     SwingUtils.showInfoMessageBox("Enter int array please");
                 }
