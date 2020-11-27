@@ -4,12 +4,7 @@ public class MatrixCut {
     public int[][] trimMatrixToSquare(int[][] matrix) {
         final int rowLength = matrix[0].length;
         final int columnLength = matrix.length;
-
-        if (rowLength <= columnLength) {
-            return trimMatrix(rowLength, matrix);
-        }
-
-        return trimMatrix(columnLength, matrix);
+        return (rowLength <= columnLength ? trimMatrix(rowLength, matrix) : trimMatrix(columnLength, matrix));
     }
 
     private static int[][] trimMatrix(int sideOfASquare, int[][] matrix) {
