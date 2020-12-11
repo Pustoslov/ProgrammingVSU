@@ -189,7 +189,7 @@ n и e, определяемых вводом, вычислить:
 
 Реализовать в виде функции:
 `public static List <Integer> createNewList
-(List<Integer> ist)`
+(List<Integer> list)`
 
 Для удобства реализовать дополнительную функцию:
 `public static int countOf (List<Integer> list, int value)`
