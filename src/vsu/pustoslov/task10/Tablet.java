@@ -3,14 +3,19 @@ package vsu.pustoslov.task10;
 public class Tablet {
     private final String name;
     private final int memory;
-    private final int rate;
-    private final int price;
+    private final double rate;
+    private final double price;
 
-    public Tablet(String name, int memory, int rate, int price) {
+    public Tablet(String name, int memory, double rate, double price) {
         this.name = name;
         this.memory = memory;
         this.rate = rate;
         this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        return name + ", " + memory + ", " + rate + ", " + price;
     }
 
     public String getName() {
@@ -21,11 +26,11 @@ public class Tablet {
         return memory;
     }
 
-    public int getRate() {
+    public double getRate() {
         return rate;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 }
