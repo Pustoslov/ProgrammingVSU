@@ -1,8 +1,7 @@
 package vsu.pustoslov.commons;
 
-import ru.vsu.cs.util.ArrayUtils;
-
 import java.util.Scanner;
+import ru.vsu.cs.util.ArrayUtils;
 
 public class ConsoleReader {
     private final Scanner scanner = new Scanner(System.in);
@@ -15,6 +14,11 @@ public class ConsoleReader {
     public int readInt(String lineForPrinting) {
         System.out.print(lineForPrinting);
         return scanner.nextInt();
+    }
+
+    public String readString(String lineForPrinting) {
+        System.out.print(lineForPrinting);
+        return scanner.nextLine();
     }
 
     public int[] readIntArray() {
