@@ -7,11 +7,11 @@ public class RomanToArabic {
         int i = 0;
 
         while (inputString.length() > 0 && i < romanNumerals.length) {
-            final RomanNumeral symbol = romanNumerals[i];
+            final RomanNumeral currentSymbol = romanNumerals[i];
 
-            if (inputString.startsWith(symbol.name())) {
-                result += symbol.getValue();
-                inputString = inputString.substring(symbol.name().length());
+            if (inputString.startsWith(currentSymbol.name())) {
+                result += currentSymbol.getValue();
+                inputString = inputString.substring(currentSymbol.name().length());
             } else {
                 i++;
             }
