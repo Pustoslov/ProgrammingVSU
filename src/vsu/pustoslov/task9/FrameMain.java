@@ -73,7 +73,8 @@ public class FrameMain extends JFrame {
             public void actionPerformed(ActionEvent actionEvent) {
                 try {
                     if (FILE_CH00SER_OPEN.showOpenDialog(panelMain) == JFileChooser.APPROVE_OPTION) {
-                        final List<Integer> inputList = InputFileReader.readListFromFile(FILE_CH00SER_OPEN.getSelectedFile().getPath());
+                        final InputFileReader inputFileReader = new InputFileReader();
+                        final List<Integer> inputList = inputFileReader.readListFromFile(FILE_CH00SER_OPEN.getSelectedFile().getPath());
                         final Integer[] arrayOfInt = inputList.toArray(new Integer[0]);
                         final String[] arrayOfString = new String[arrayOfInt.length];
                         for (int i = 0; i < arrayOfInt.length; i++) {
@@ -112,7 +113,8 @@ public class FrameMain extends JFrame {
                     for (Integer value : arr) {
                         inputList.add(value);
                     }
-                    final List<Integer> answerList = ListReverse.createNewList(inputList);
+                    final ListReverse listReverse = new ListReverse();
+                    final List<Integer> answerList = listReverse.createNewList(inputList);
                     final Integer[] arrayOfInteger = answerList.toArray(new Integer[0]);
 
                     JTableUtils.writeArrayToJTable(tableOutput, ArrayUtils.toPrimitive(arrayOfInteger));
@@ -138,7 +140,8 @@ public class FrameMain extends JFrame {
                         for (Integer value : arr) {
                             inputList.add(value);
                         }
-                        OutputFileWriter.saveFile(inputList, file);
+                        final OutputFileWriter outputFileWriter = new OutputFileWriter();
+                        outputFileWriter.saveFile(inputList, file);
                     }
                 } catch (Exception e) {
                     SwingUtils.showErrorMessageBox(e);

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ListReverse {
-    public static List<Integer> createNewList(List<Integer> introducedList) {
+    public List<Integer> createNewList(List<Integer> introducedList) {
         final List<Integer> answerList = new ArrayList<>();
         for (int i = introducedList.size(); i > 0; i--) {
             int value = introducedList.get(i - 1);

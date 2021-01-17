@@ -14,9 +14,12 @@ public class Task9CMD {
 
         final String inputFile = CONSOLE.readLine("Enter the name of input file please: ");
         final String outputFile = CONSOLE.readLine("Enter the name of output file please: ");
+        final ListReverse listReverse = new ListReverse();
+        final InputFileReader inputFileReader = new InputFileReader();
+        final OutputFileWriter outputFileWriter = new OutputFileWriter();
         try {
-            final List<Integer> answerList = ListReverse.createNewList(InputFileReader.readListFromFile(inputFile));
-            OutputFileWriter.saveFile(answerList, outputFile);
+            final List<Integer> answerList = listReverse.createNewList(inputFileReader.readListFromFile(inputFile));
+            outputFileWriter.saveFile(answerList, outputFile);
         } catch (FileNotFoundException e) {
             System.err.println("Can't find the file, try again");
         }

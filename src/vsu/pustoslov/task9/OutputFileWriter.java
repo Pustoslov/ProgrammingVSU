@@ -6,16 +6,16 @@ import java.io.PrintWriter;
 import java.util.List;
 
 public class OutputFileWriter {
-    public static void saveFile(List<Integer> answerList, String outputFile) throws FileNotFoundException {
+    public void saveFile(List<Integer> answerList, String outputFile) throws FileNotFoundException {
         final File file = new File(outputFile);
-        final PrintWriter write = new PrintWriter(file);
-        for (Integer value : answerList) {
-            if (!value.equals(answerList.get(answerList.size() - 1))) {
-                write.print(value + ", ");
-            } else {
-                write.print(value);
+        try (final PrintWriter writer = new PrintWriter(file)) {
+            for (Integer value : answerList) {
+                if (!value.equals(answerList.get(answerList.size() - 1))) {
+                    writer.print(value + ", ");
+                } else {
+                    writer.print(value);
+                }
             }
         }
-        write.close();
     }
 }
